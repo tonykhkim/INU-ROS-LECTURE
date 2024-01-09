@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -47,11 +48,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  DIRECTORY msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -68,10 +67,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -129,6 +128,39 @@ add_executable(hello_world_ros_node
 )
 target_link_libraries(hello_world_ros_node ${catkin_LIBRARIES})
 add_dependencies(hello_world_ros_node ${catkin_EXPORTED_TARGETS})
+
+add_executable(pub_basic_test_ros_node 
+  include/pub_basic_test_ros.h
+  lib/pub_basic_test_ros.cpp
+  src/main_pub_basic_test_ros_node.cpp
+)
+target_link_libraries(pub_basic_test_ros_node ${catkin_LIBRARIES})
+add_dependencies(pub_basic_test_ros_node ${catkin_EXPORTED_TARGETS})
+
+
+add_executable(sub_basic_test_ros_node 
+  include/sub_basic_test_ros.h
+  lib/sub_basic_test_ros.cpp
+  src/main_sub_basic_test_ros_node.cpp
+)
+target_link_libraries(sub_basic_test_ros_node ${catkin_LIBRARIES})
+add_dependencies(sub_basic_test_ros_node ${catkin_EXPORTED_TARGETS})
+
+add_executable(pub_advanced_test_ros_node 
+  include/pub_advanced_test_ros.h
+  lib/pub_advanced_test_ros.cpp
+  src/main_pub_advanced_test_ros_node.cpp
+)
+target_link_libraries(pub_advanced_test_ros_node ${catkin_LIBRARIES})
+add_dependencies(pub_advanced_test_ros_node ${catkin_EXPORTED_TARGETS})
+
+add_executable(sub_advanced_test_ros_node 
+  include/sub_advanced_test_ros.h
+  lib/sub_advanced_test_ros.cpp
+  src/main_sub_advanced_test_ros_node.cpp
+)
+target_link_libraries(sub_advanced_test_ros_node ${catkin_LIBRARIES})
+add_dependencies(sub_advanced_test_ros_node ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

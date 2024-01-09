@@ -13,9 +13,9 @@ using namespace ros;
 
 class HelloWorldRos
 {
-public:                 //public으로 생성자와 소멸자 선언
-  HelloWorldRos();
-  ~HelloWorldRos();
+public:                 //declaring constructors and destructors as public
+  HelloWorldRos();             //constructors
+  ~HelloWorldRos();            //destructors
 
   void MainLoop();  
 
